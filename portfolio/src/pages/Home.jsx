@@ -10,11 +10,14 @@ export const Home = () => {
                         <div className=" text-6xl font-bold drop-shadow-lg text-lime-200">Web Developer</div>
                     </div>
 
-                    <div className=" w-96 bg-gradient-to-r from-blue-500 to-fuchsia-500 m-5 rounded-xl">
-                        <div className=" font-extrabold font-serif text-4xl  bg-violet-500 text-red-400 p-4">Hello, Welcome...
+                    <div className=" w-96 h-60 bg-gradient-to-r from-blue-500 to-fuchsia-500 m-5 rounded-xl">
+                        <div className=" font-extrabold font-serif text-4xl  bg-violet-500 text-red-400 p-4"> 
+                            Hi, Welcome
                         </div>
                         <div className="p-5">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus illum doloremque eum recusandae eligendi voluptatum asperiores nostrum? Doloribus labore, quae, velit rerum quas error eligendi est quibusdam nam repellendus sequi!
+                        Welcome to My Portfolio!
+                         Hi, I'm Subhrat Verma, a passionate web developer with a knack for creating dynamic and user-friendly websites.
+
                         </div>
 
                     </div>
