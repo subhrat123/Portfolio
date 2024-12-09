@@ -26,6 +26,7 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.pre('save', async function (next) {
+    
     const user = this;
 
     if (!user.isModified("password")) {
@@ -37,7 +38,6 @@ userSchema.pre('save', async function (next) {
         const hash_password = await bcrypt.hash(user.password, saltRound);
         user.password = hash_password;
     }
-
     catch (error) {
         next(error);
     }
@@ -46,7 +46,8 @@ userSchema.pre('save', async function (next) {
 
 userSchema.methods.generateToken =async function () {
      return jwt.sign(
-         {userId : this._id.toString(),
+         {
+            userId : this._id.toString(),
           email: this.email,
           isAdmin: this.isAdmin,
  },

@@ -2,9 +2,9 @@ const express = require("express");
 const User = require("../models/user_schema");
 const bcrypt = require("bcryptjs");
 
-const home =async (req, res) => {
+const home = async (req, res) => {
     try {
-        res.status(200).json({message:"Home page is created"});
+        res.status(200).json({ message: "Home page is created" });
     }
     catch (err) {
         res.status(400).send({ msg: "error" });
@@ -14,21 +14,19 @@ const home =async (req, res) => {
 const register = async (req, res) => {
     try {
 
-        // res.send("subhrat is great lovely boy!!");
-
         const { username, email, password } = req.body;
 
         console.log(req.body);
 
         const userExist = await User.findOne({ email });
-        if (userExist) {   
+        if (userExist) {
             return res.status(400).send({ message: "user already exists!" });
         }
-        
+
         // const saltRound = 10;
         // const hash_password = await bcrypt.hash(password,saltRound);
 
-        const n = await User.create({ username, email, password});
+        const n = await User.create({ username, email, password });
 
         res.status(201).json({ msg: n, token: await n.generateToken(), userId: n._id.toString() });
 
@@ -41,6 +39,9 @@ const register = async (req, res) => {
 
     }
 };
+
+
+
 const login = async (req, res) => {
     try {
 
@@ -55,7 +56,6 @@ const login = async (req, res) => {
             return res.status(400).send("Invalid password");
         }
 
-        // Assuming generateToken is a method defined in your User model
         const token = await userExist.generateToken();
 
         res.status(200).json({ message: "Login successful", token: token, userId: userExist._id.toString() });
@@ -66,6 +66,17 @@ const login = async (req, res) => {
     }
 
 };
+ 
+const user = async (req, res) => {
+    try {
 
-module.exports = { home, register, login };
+        const userData = req.user;
+        console.log(userData);
+        return res.status(200).json({userData });
+    } catch (error) {
+        console.log(`error from the user route ${error}`)
+    }
+}
+
+module.exports = { home, register, login, user };
 

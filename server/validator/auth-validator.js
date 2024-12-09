@@ -1,7 +1,7 @@
 const z=require("zod");
 
 const signUpSchema = z.object({
-    
+    //schema validation for input data.
     username:z
     .string({required_error:"Name is required"})
     .trim()
