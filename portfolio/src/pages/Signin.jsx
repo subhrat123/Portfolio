@@ -52,9 +52,10 @@ const {storeTokenLS}=useAuth();
     }
 
     return <>
-        <section className=" h-screen bg-gradient-to-r from-blue-400 to-fuchsia-500 max-h-[calc(100vh-18.5vh)] text-white ">
-            <main className=" h-screen bg-gradient-to-r from-blue-400 to-fuchsia-500 min-h-[calc(100vh-13.5vh)]">
-                <div className="max-lg:flex-col py-5 w-auto flex justify-center items-center gap-10  ">
+        <section className=" h-screen  text-white ">
+        <img src="./src/assets/about.jpg" alt="img" className=" max-lg:h-screen fixed lg:h-[calc(100vh-5vh)] w-full -z-10 top-0 left-0 " />
+            <main className="">
+                <div className="max-lg:flex-col relative md:top-32 py-5 w-auto flex justify-center items-center gap-10  ">
                     <div className="  img lg:grid justify-items-end">
                         <img className=" rounded-2xl max-lg:h-80 h-full w-96 drop-shadow-2xl" src=".\src\assets\open_account.png" alt="image" />
                     </div>

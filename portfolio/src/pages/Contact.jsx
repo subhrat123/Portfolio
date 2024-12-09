@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import { useAuth } from "../store/auth";
 export const Contact = () => {
 
     const [data, setdata] = useState({
@@ -8,11 +8,22 @@ export const Contact = () => {
         message: "",
 
     });
+ const [userData, setuserData] = useState(true);
+const {user}=useAuth();
 
-    
+
+if(userData && user){
+    setdata({
+        username: user.username,
+        email: user.email,
+        message: "",
+    })
+
+    setuserData(false);
+}
 
     const set = (e) => {
-        console.log(e.target);
+        
         let name = e.target.name;
         let value = e.target.value;
 
@@ -22,9 +33,9 @@ export const Contact = () => {
         });
     }
 
-    const handleSubmit =async (e)=>{
+    const handleSubmit =async (e)=>{ 
         e.preventDefault();
-      const response =  fetch(`localhost:3000/contact`,{
+      const response =  fetch(`http://localhost:3000/contact`,{
            method:"POST",
            headers:{
             'Content-Type':"application/json"
@@ -32,18 +43,25 @@ export const Contact = () => {
            body: JSON.stringify(data),
         });
 
-        console.log(response);
+         
+            setdata({
+                username:"",
+                email:"",
+                message:""
+            })
+        
     }
 
     return <>
-        <section className=" lg:h-[calc(100vh-65px)] w-full relative bg-gradient-to-r from-blue-400 to-fuchsia-400  text-white ">
-            <main className=" h-screen bg-gradient-to-r from-blue-400 to-fuchsia-500 min-h-[calc(100vh-13.5vh)]">
-                <div className="max-lg:flex-col py-5 w-auto flex justify-center items-center gap-10  ">
-                    <div className="  img lg:grid justify-items-end">
+        <section className=" h-[85.7vh] w-full relative bg-gradient-to-r from-blue-400 to-fuchsia-400  text-white">
+            <main className=" h-full bg-gradient-to-r from-blue-400 to-fuchsia-500 flex justify-center items-center ">
+                <div className=" -z-0 max-lg:flex-col py-5 w-auto flex justify-center items-center gap-10  ">
+                    {/* <div className="  img lg:grid justify-items-end">
                         <img className=" rounded-2xl max-lg:h-80 w-96 max-h-full drop-shadow-2xl" src="./src/assets/contact.jpg" alt="image" />
-                    </div>
-                    <div className=" lg: w-80 text-center register font-serif">
-                        <h1 className=" text-4xl mb-6">Contact Us</h1>
+                    </div> */}
+                        <img className=" h-[70vh] rounded-lg drop-shadow-2xl shadow-violet-700 shadow-2xl absolute -z-10" src="./src/assets/contact1.jpg" alt="" />
+                    <div className=" -z-0 relative lg: w-80 text-center  register font-serif">
+                        <h1 className=" text-4xl mb-6">Contact me</h1>
                         <hr />
                         <form onSubmit={handleSubmit} className="  mt-3">
                             <div className="  flex-col h-full items-center justify-center">
@@ -63,7 +81,6 @@ export const Contact = () => {
                             <button className=" bg-teal-600 px-3 py-1 text-2xl rounded-xl" type="submit">Send</button>
                         </form>
                     </div>
-
 
                 </div>
             </main>

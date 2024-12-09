@@ -59,11 +59,12 @@ export const Login = () => {
 
 
     return <>
-        <section className=" h-screen bg-gradient-to-r from-blue-400 to-fuchsia-500  text-white ">
-            <main className=" h-screen bg-gradient-to-r from-blue-400 to-fuchsia-500 min-h-[calc(100vh-13.5vh)]">
+        <section className=" h-screen  text-white ">
+        <img src="./src/assets/about.jpg" alt="img" className=" max-lg:h-screen fixed lg:h-[calc(100vh-5vh)] w-full -z-10 top-0 left-0 " />
+            <main className=" relative  top-32 ">
                 <div className="max-lg:flex-col py-5 w-auto flex justify-center items-center gap-10  ">
-                    <div className="  img lg:grid justify-items-end">
-                        <img className=" rounded-2xl max-lg:w-80 drop-shadow-2xl" src=".\src\assets\registration.png" alt="image" />
+                    <div className="  img lg:grid max-lg:w-80 lg:w-[500px] justify-items-end">
+                        <img className=" rounded-2xl drop-shadow-2xl" src=".\src\assets\registration.png" alt="image" />
                     </div>
                     <div className=" lg: w-80 text-center register font-serif">
                         <h1 className=" text-4xl mb-6">Login</h1>

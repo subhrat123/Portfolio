@@ -1,18 +1,30 @@
+
+import { useAuth } from "../store/auth"
+
 export const Home = () => {
+
+    const {user}=useAuth();
+
+
+
     return <>
-        <div className=" lg:h-[calc(100vh-88px)] w-full relative bg-gradient-to-r from-blue-400 to-fuchsia-400  text-white ">
-            <div className=" font-thin text-xl text-balance flex-col flex justify-center  gap-32 px-10 items-center">
+        <div className=" lg:h-[calc(100vh-88px)] w-full relative bg-gradient-to-r from-blue-400 to-fuchsia-400  text-white flex justify-center items-center ">
+            
+            <div className=" font-thin text-xl text-balance flex-col flex justify-center  gap-16  items-center">
 
+                <div className="about relative top-[32px] max-lg:flex-col drop-shadow-lg flex gap-24">
+                    <div className=" flex flex-col justify-center items-center gap-16">
+                        <div className=" overflow-hidden flex items-center  outline outline-2 outline-cyan-400 shadow-xl drop-shadow-2xl bg-cyan-400 shadow-cyan-400 filter saturate-100 rounded-full h-[15em] w-[15em] mb-4 ">
 
-                <div className="about  max-lg:flex-col drop-shadow-lg flex gap-24">
-                    <div className=" flex flex-col justify-center items-center">
-                        <img className="  drop-shadow-lg rounded-full h-auto w-72 mb-4 " src="./src/assets/subh.png" alt="img" />
-                        <div className=" text-6xl font-bold drop-shadow-lg text-lime-200">Web Developer</div>
+                        <img className=" h-[15em] w-auto" src="./src/assets/profile.jpg" alt="img" />
+                        </div>
+
+                        <div className=" text-6xl font-bold drop-shadow-lg text-yellow-200 px-10">Web Developer</div>
                     </div>
 
-                    <div className=" w-96 h-60 bg-gradient-to-r from-blue-500 to-fuchsia-500 m-5 rounded-xl">
+                    <div className=" w-96 h-60 hover:shadow-2xl shadow-xl hover:shadow-purple-500 shadow-purple-300 bg-gradient-to-r from-blue-500 to-fuchsia-500 m-5 rounded-xl">
                         <div className=" font-extrabold font-serif text-4xl  bg-violet-500 text-red-400 p-4"> 
-                            Hi, Welcome
+                            Hi, {user.username}
                         </div>
                         <div className="p-5">
                         Welcome to My Portfolio!
@@ -26,8 +38,8 @@ export const Home = () => {
 
                 <div className=" mb-5 justify-center text-2xl flex gap-4">
 
-                    <div className="contact bg-gradient-to-r drop-shadow-lg from-blue-500 to-violet-500 p-2 rounded-3xl"><button className=" rounded-2xl "><a className="  no-underline" href="/Contact">Contact </a> </button></div>
-                    <div className="Skills bg-gradient-to-r drop-shadow-lg from-blue-500 to-violet-500 p-2 rounded-2xl"><button className=" rounded-2xl "><a className="  no-underline" href="/Skills">Skills</a></button></div>
+                    <div className="contact outline outline-purple-500 shadow-purple-500 bg-gradient-to-r from-blue-500 to-violet-500 p-2 hover:shadow-violet-500 shadow-lg drop-shadow-lg rounded-3xl"><button className=" rounded-2xl "><a className="  no-underline" href="/Contact">Contact </a> </button></div>
+                    <div className="Skills w-32 text-center outline outline-purple-500 shadow-purple-500 bg-gradient-to-r from-blue-500 to-violet-500 p-2 hover:shadow-violet-500 shadow-lg drop-shadow-lg rounded-3xl"><button className=" rounded-2xl "><a className="  no-underline" href="/Skills">Skills</a></button></div>
 
                 </div>
             </div>
