@@ -59,37 +59,85 @@ export const Login = () => {
 
 
     return <>
-        <section className=" h-screen  text-white ">
-        <img src="./src/assets/about.jpg" alt="img" className=" max-lg:h-screen fixed lg:h-[calc(100vh-5vh)] w-full -z-10 top-0 left-0 " />
-            <main className=" relative  top-32 ">
-                <div className="max-lg:flex-col py-5 w-auto flex justify-center items-center gap-10  ">
-                    <div className="  img lg:grid max-lg:w-80 lg:w-[500px] justify-items-end">
-                        <img className=" rounded-2xl drop-shadow-2xl" src=".\src\assets\registration.png" alt="image" />
-                    </div>
-                    <div className=" lg: w-80 text-center register font-serif">
-                        <h1 className=" text-4xl mb-6">Login</h1>
-                        <hr />
-                        <form onSubmit={handleSubmit} className="  mt-3">
-                            <div className="  flex-col h-full items-center justify-center">
-                                <div className="  flex-col " >
-                                    <div className="  m-3 list-none  text-2xl "> <label htmlFor="email">Email :</label></div>
-                                    <input className=" p-2 w-full rounded border-none  text-slate-950" onChange={set} autoComplete="off" type="email" name="email" value={data.email} id="email" placeholder="Enter Your Email" />
+      <section className="h-screen w-full relative text-white overflow-hidden">
+  {/* Background Image */}
+  <img
+    src="./src/assets/about.jpg"
+    alt="background"
+    className="fixed top-0 left-0 w-full h-full object-cover -z-10"
+  />
 
-                                    <div className="  m-3 list-none text-2xl "> <label htmlFor="Password">Password :</label></div>
-                                    <input className=" p-2 w-full rounded border-none  text-slate-950" onChange={set} autoComplete="off" type="password" name="password" value={data.password} id="password" placeholder="Password" />
+  <main className="flex items-center justify-center h-full">
+    <div className="flex flex-col lg:flex-row items-center gap-12 bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl p-8 md:p-12 max-w-5xl w-full mx-6">
+      {/* Illustration */}
+      <div className="w-72 lg:w-[400px]">
+        <img
+          src="./src/assets/registration.png"
+          alt="Login illustration"
+          className="rounded-2xl shadow-lg"
+        />
+      </div>
 
-                                </div>
-                            </div>
+      {/* Form Section */}
+      <div className="w-full max-w-md text-center">
+        <h1 className="text-4xl font-bold mb-4 text-yellow-300 drop-shadow-lg">
+         Admin Login
+        </h1>
+        <hr className="border-purple-400 mb-6" />
 
-                            <br />
-                            <button className=" bg-teal-600 px-3 py-1 text-2xl rounded-xl" type="submit">Login</button>
-                        </form>
-                    </div>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="text-left space-y-4">
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-xl font-medium text-white mb-1"
+              >
+                Email
+              </label>
+              <input
+                className="w-full px-4 py-2 rounded-md bg-white text-gray-900 focus:outline-none shadow-md"
+                type="email"
+                name="email"
+                id="email"
+                value={data.email}
+                onChange={set}
+                autoComplete="off"
+                placeholder="Enter your email"
+              />
+            </div>
 
+            <div>
+              <label
+                htmlFor="password"
+                className="block text-xl font-medium text-white mb-1"
+              >
+                Password
+              </label>
+              <input
+                className="w-full px-4 py-2 rounded-md bg-white text-gray-900 focus:outline-none shadow-md"
+                type="password"
+                name="password"
+                id="password"
+                value={data.password}
+                onChange={set}
+                autoComplete="off"
+                placeholder="Enter your password"
+              />
+            </div>
+          </div>
 
-                </div>
-            </main>
-        </section>
+          <button
+            type="submit"
+            className="w-full py-2 text-xl font-semibold rounded-xl bg-gradient-to-r from-blue-600 via-purple-600 to-fuchsia-500 hover:scale-105 transition-transform shadow-lg"
+          >
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+</section>
+
 
     </>
 }

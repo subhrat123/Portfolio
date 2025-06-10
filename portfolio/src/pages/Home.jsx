@@ -1,49 +1,54 @@
-
-import { useAuth } from "../store/auth"
+import { useAuth } from "../store/auth";
 
 export const Home = () => {
+  const { user } = useAuth();
 
-    const {user}=useAuth();
-
-
-
-    return <>
-        <div className=" lg:h-[calc(100vh-88px)] w-full relative bg-gradient-to-r from-blue-400 to-fuchsia-400  text-white flex justify-center items-center ">
-            
-            <div className=" font-thin text-xl text-balance flex-col flex justify-center  gap-16  items-center">
-
-                <div className="about relative top-[32px] max-lg:flex-col drop-shadow-lg flex gap-24">
-                    <div className=" flex flex-col justify-center items-center gap-16">
-                        <div className=" overflow-hidden flex items-center  outline outline-2 outline-cyan-400 shadow-xl drop-shadow-2xl bg-cyan-400 shadow-cyan-400 filter saturate-100 rounded-full h-[15em] w-[15em] mb-4 ">
-
-                        <img className=" h-[15em] w-auto" src="./src/assets/profile.jpg" alt="img" />
-                        </div>
-
-                        <div className=" text-6xl font-bold drop-shadow-lg text-yellow-200 px-10">Web Developer</div>
-                    </div>
-
-                    <div className=" w-96 h-60 hover:shadow-2xl shadow-xl hover:shadow-purple-500 shadow-purple-300 bg-gradient-to-r from-blue-500 to-fuchsia-500 m-5 rounded-xl">
-                        <div className=" font-extrabold font-serif text-4xl  bg-violet-500 text-red-400 p-4"> 
-                            Hi, {user.username}
-                        </div>
-                        <div className="p-5">
-                        Welcome to My Portfolio!
-                         Hi, I'm Subhrat Verma, a passionate web developer with a knack for creating dynamic and user-friendly websites.
-
-                        </div>
-
-                    </div>
-                </div>
-
-
-                <div className=" mb-5 justify-center text-2xl flex gap-4">
-
-                    <div className="contact outline outline-purple-500 shadow-purple-500 bg-gradient-to-r from-blue-500 to-violet-500 p-2 hover:shadow-violet-500 shadow-lg drop-shadow-lg rounded-3xl"><button className=" rounded-2xl "><a className="  no-underline" href="/Contact">Contact </a> </button></div>
-                    <div className="Skills w-32 text-center outline outline-purple-500 shadow-purple-500 bg-gradient-to-r from-blue-500 to-violet-500 p-2 hover:shadow-violet-500 shadow-lg drop-shadow-lg rounded-3xl"><button className=" rounded-2xl "><a className="  no-underline" href="/Skills">Skills</a></button></div>
-
-                </div>
-            </div>
-
+  return (
+    <div className="lg:h-[calc(100vh-13vh)] w-full bg-gradient-to-r from-blue-500 via-purple-600 to-fuchsia-600 text-white lg:flex items-center justify-center overflow-hidden">
+      <div className="max-w-6xl w-full px-6 py-10 flex flex-col lg:flex-row items-center justify-center gap-16">
+        {/* Profile Section */}
+        <div className="flex flex-col items-center text-center gap-6">
+          <div className="rounded-full overflow-hidden outline outline-2 outline-cyan-300 shadow-xl drop-shadow-2xl bg-cyan-400 h-60 w-60 flex items-center justify-center">
+            <img
+              className="h-full object-cover"
+              src="./src/assets/profile.jpg"
+              alt="profile"
+            />
+          </div>
+          <h1 className="text-yellow-300 text-5xl font-bold drop-shadow-lg">
+            Web Developer
+          </h1>
         </div>
-    </>
-}
+
+        {/* Welcome Box */}
+        <div className="w-full max-w-lg bg-gradient-to-br from-blue-500 to-fuchsia-500 rounded-xl shadow-xl hover:shadow-purple-500 transition-all">
+          <div className="text-3xl font-bold bg-violet-600 text-red-300 p-4 rounded-t-xl font-serif">
+            Hi,
+          </div>
+          <div className="p-6 text-lg">
+            Welcome to My Portfolio!
+            <br />
+            I'm <b>Subhrat Verma</b>, a passionate web developer with a knack
+            for creating dynamic and user-friendly websites.
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation Buttons */}
+      <div className="lg:absolute lg:bottom-32  flex gap-6 justify-center items-center max-lg:m-4">
+        <a
+          href="/Contact"
+          className="bg-gradient-to-r from-blue-600 to-purple-500 px-6 py-2 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition-all duration-300"
+        >
+          Contact
+        </a>
+        <a
+          href="/Skills"
+          className="bg-gradient-to-r from-blue-600 to-purple-500 px-6 py-2 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition-all duration-300"
+        >
+          Skills
+        </a>
+      </div>
+    </div>
+  );
+};

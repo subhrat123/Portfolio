@@ -1,60 +1,114 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+
 export const Skills = () => {
-    return <>
-        <div className=" lg:h-[calc(100vh-88px)] font-serif text-white flex flex-col justify-center items-center text-3xl">
-            <img src="./src/assets/skill.jpg" className="fixed  top-0 left-0 w-full h-screen -z-10" alt="" />
-            <div className="text-3xl m-4 text-lime-500">SKILLS</div>
-            <div className=" mb-3 flex flex-wrap gap-5 justify-center text-lg  items-center ">
-                <div className="card drop-shadow-lg rounded-xl  html bg-pink-600 backdrop-blur-3xl shadow-xl  max-lg:w-[8rem] max-lg:h-[8rem] shadow-pink-600 p-4">
-                    <img className=" h-[10vh] rounded" src="./src/assets/html.jpeg" alt="" />
 
-                </div>
-                <div className="card drop-shadow-lg rounded-xl css bg-pink-600 backdrop-blur-3xl shadow-xl max-lg:w-[8rem] max-lg:h-[8rem] shadow-pink-600 p-4">
-                    <img className=" h-[10vh] rounded" src="./src/assets/CSS.png" alt="" />
+    const [skills, setSkills] = useState([]);
 
-                </div>
-                <div className="card drop-shadow-lg rounded-xl java bg-pink-600 backdrop-blur-3xl shadow-xl max-lg:w-[8rem] max-lg:h-[8rem] shadow-pink-600 p-4">
-                    <img className=" h-[10vh] rounded" src="./src/assets/java.jpeg" alt="" />
+    const fetchSkills = async () => {
+        try {
+            const res = await axios.get("http://localhost:3000/admin/skills");
+            const skillsList = res.data.map(skill => ({
+                _id: skill._id,
+                skillname: skill.name,
+                description: skill.description,
+                image: skill.url,
+            }));
+            setSkills(skillsList);
+        } catch (err) {
+            console.error("Failed to fetch skills", err);
+        }
+    };
 
-                </div>
-                <div className="card drop-shadow-lg rounded-xl nodejs bg-pink-600 backdrop-blur-3xl shadow-xl max-lg:w-[8rem] max-lg:h-[8rem] shadow-pink-600 p-4">
-                    <img className=" h-[10vh] rounded" src="./src/assets/nodejs.png" alt="" />
+    useEffect(() => {
+        fetchSkills();
+    }, []);
 
-                </div>
-                <div className="card drop-shadow-lg rounded-xl react bg-pink-600 backdrop-blur-3xl shadow-xl max-lg:w-[8rem] max-lg:h-[8rem] shadow-pink-600 p-4">
-                    <img className=" h-[10vh] rounded" src="./src/assets/react.svg" alt="" />
 
+
+    return (
+        <>
+          <div className="pt-[12vh] relative min-h-screen font-serif text-white flex flex-col justify-start items-center text-3xl pb-8 overflow-x-hidden">
+
+                {/* Fancy animated background */}
+                <img
+                    src="./src/assets/skill.jpg"
+                    className=" shadow-2xl brightness-110 contrast-125 saturate-15 fixed top-0 left-0 w-full h-screen object-cover -z-10"
+                    alt=""
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/30 via-purple-700/20 to-blue-600/30 backdrop-blur-[2px] -z-10" />
+
+                {/* Skills Header */}
+                <div className="text-4xl m-6 font-bold text-lime-300 tracking-widest drop-shadow-xl">
+                    SKILLS
                 </div>
-                <div className="card drop-shadow-lg rounded-xl mongodb bg-pink-600 backdrop-blur-3xl shadow-xl max-lg:w-[8rem] max-lg:h-[8rem] shadow-pink-600 p-4">
-                    <img className=" h-[10vh] w-40 rounded" src="./src/assets/mongodb.png" alt="" />
+
+                {/* Skills Grid */}
+                <div className="mb-16 flex flex-wrap justify-center gap-8 px-6">
+                    {skills.map((skill) => (
+                        <div
+                            key={skill._id}
+                            className="group relative bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-6 w-36 h-40 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
+                            title={skill.description}
+                        >
+                            <div className="w-20 h-20 flex items-center justify-center rounded-full overflow-hidden bg-white/20">
+                                <img
+                                    src={skill.image}
+                                    alt={skill.skillname}
+                                    className="object-contain w-full h-full"
+                                />
+                            </div>
+                            <p className="mt-4 text-white text-center font-semibold text-sm group-hover:text-yellow-300 transition-all duration-300">
+                                {skill.skillname}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+
+                <hr className="border-pink-400 w-2/3 my-6 shadow-md" />
+
+                <div className="text-3xl text-lime-400 font-bold">SKILLS</div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl w-full">
+                    {/* Front-End Development */}
+                    <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-6 rounded-xl shadow-lg text-left">
+                        <div className="text-xl font-semibold text-cyan-300 mb-2">Front-End Development</div>
+                        <ul className="list-disc ml-6 text-base space-y-2">
+                            <li><strong>HTML5 & CSS3:</strong> Semantic markup, responsive layouts using Flexbox and Grid, accessibility standards.</li>
+                            <li><strong>JavaScript (ES6+):</strong> Modern syntax, DOM manipulation, async/await, fetch API, and modular programming.</li>
+                            <li><strong>Tailwind CSS:</strong> Rapid UI development with utility-first classes, custom themes, and responsive design.</li>
+                            <li><strong>React.js:</strong> Functional components, React Router, Hooks (useState, useEffect, useContext), and state management.</li>
+                            <li><strong>Version Control:</strong> Git & GitHub for source code management and collaboration.</li>
+                        </ul>
+                    </div>
+
+                    {/* Back-End Development */}
+                    <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-6 rounded-xl shadow-lg text-left">
+                        <div className="text-xl font-semibold text-cyan-300 mb-2">Back-End Development</div>
+                        <ul className="list-disc ml-6 text-base space-y-2">
+                            <li><strong>Node.js:</strong> Building scalable RESTful APIs, file system handling, and event-driven programming.</li>
+                            <li><strong>Express.js:</strong> Routing, middleware usage, request/response handling, and error management.</li>
+                            <li><strong>MongoDB:</strong> Document-based NoSQL database, schema design, indexing, and aggregation framework.</li>
+                            <li><strong>Mongoose:</strong> ODM for MongoDB, schema validation, population, and model relationships.</li>
+                            <li><strong>Authentication:</strong> JWT-based login systems with bcrypt hashing for security.</li>
+                        </ul>
+                    </div>
+
+                    {/* Tools & Other Skills */}
+                    <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-6 rounded-xl shadow-lg text-left">
+                        <div className="text-xl font-semibold text-cyan-300 mb-2">Other Tools & Skills</div>
+                        <ul className="list-disc ml-6 text-base space-y-2">
+                            <li><strong>Postman:</strong> API testing and debugging tool for backend development.</li>
+                            <li><strong>VS Code:</strong> Main development environment with useful extensions and productivity workflows.</li>
+                            <li><strong>Python (Basic):</strong> Scripting, control structures, data structures, and basic ADK usage.</li>
+                            <li><strong>Deployment:</strong> Experience using Render, Vercel, and Netlify for hosting full-stack apps.</li>
+                        </ul>
+                    </div>
 
                 </div>
             </div>
+        </>
+    );
+};
 
-            <hr className="border-pink-500 w-2/3 my-6" />
-
-            <div className=" m-4  font-bold text-green-500">Practice Projects</div>
-            <div className=" flex-wrap overflow-auto m-4 flex justify-center item-center gap-6 max-md:w-[25rem] projects">
-                <div className="spotify  max-lg:mb-2 gap-5 h-auto w-40 bg-sky-400 shadow-xl shadow-cyan-300 drop-shadow-lg backdrop-blur-3xl p-4 flex flex-col rounded-lg justify-center items-center">
-
-                    <img className=" drop-shadow-xl m-4" src="./src/assets/netflix.svg" alt="netflix" />
-                    <p className=" text-white text-sm font-serif">Netflix Sign-Up page UI clone</p>
-                </div>
-                <div className="spotify  max-lg:mb-2 gap-5 h-auto w-40 bg-sky-400 shadow-xl shadow-cyan-300  drop-shadow-lg backdrop-blur-3xl p-4 flex flex-col rounded-lg justify-center items-center">
-                    <img className=" drop-shadow-xl m-4" src="./src/assets/spotify.ico" alt="netflix" />
-                    <p className=" text-white text-sm font-serif"> Spotify Clone using html, css, and javascript</p>
-                </div>
-                <div className="spotify  max-lg:mb-2 gap-5 h-auto w-40 bg-sky-400 shadow-xl shadow-cyan-300  drop-shadow-lg backdrop-blur-3xl p-4 flex flex-col rounded-lg justify-center items-center">
-                    <img className=" drop-shadow-xl m-4" src="./src/assets/password.jpg" alt="netflix" />
-                    <p className=" text-white text-sm font-serif"> Password Manager</p>
-                    <p className=" text-white text-xs font-serif">Using react, js, nodejs, mongodb</p>
-                </div>
-                <div className="spotify max-lg:mb-2  gap-5 h-auto w-40 bg-sky-400 shadow-xl shadow-cyan-300  drop-shadow-lg backdrop-blur-3xl p-4 flex flex-col rounded-lg justify-center items-center">
-                    <img className=" drop-shadow-xl m-4" src="./src/assets/todo.jpeg" alt="netflix" />
-                    <p className=" text-white text-sm font-serif">made using react, js</p>
-                </div>
-                
-                
-            </div>
-        </div>
-    </>
-}
