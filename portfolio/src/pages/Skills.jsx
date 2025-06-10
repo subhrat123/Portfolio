@@ -29,7 +29,7 @@ export const Skills = () => {
 
     return (
         <>
-          <div className="pt-[12vh] relative min-h-screen font-serif text-white flex flex-col justify-start items-center text-3xl pb-8 overflow-x-hidden">
+            <div className="pt-[12vh] relative min-h-screen font-serif text-white flex flex-col justify-start items-center text-3xl pb-8 overflow-x-hidden">
 
                 {/* Fancy animated background */}
                 <img
@@ -95,16 +95,19 @@ export const Skills = () => {
                         </ul>
                     </div>
 
-                    {/* Tools & Other Skills */}
+                    {/* Other Tools & Skills */}
                     <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-6 rounded-xl shadow-lg text-left">
                         <div className="text-xl font-semibold text-cyan-300 mb-2">Other Tools & Skills</div>
                         <ul className="list-disc ml-6 text-base space-y-2">
                             <li><strong>Postman:</strong> API testing and debugging tool for backend development.</li>
                             <li><strong>VS Code:</strong> Main development environment with useful extensions and productivity workflows.</li>
                             <li><strong>Python (Basic):</strong> Scripting, control structures, data structures, and basic ADK usage.</li>
-                            <li><strong>Deployment:</strong> Experience using Render, Vercel, and Netlify for hosting full-stack apps.</li>
+                            <li><strong>C/C++ Programming:</strong> Problem solving, competitive programming STL usage, memory management, and data structures & algorithms.</li>
+                            <li><strong>AI Integration:</strong> Exploring integration of AI tools like LLMs and LangChain into MERN stack apps.</li>
+                            <li><strong>Deployment:</strong> Experience using Render for hosting full-stack apps.</li>
                         </ul>
                     </div>
+
 
                 </div>
             </div>
