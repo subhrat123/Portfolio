@@ -8,7 +8,7 @@ export const Skills = () => {
 
     const fetchSkills = async () => {
         try {
-            const res = await axios.get("http://localhost:3000/admin/skills");
+            const res = await axios.get("https://portfolio-ecac.onrender.com/admin/skills");
             const skillsList = res.data.map(skill => ({
                 _id: skill._id,
                 skillname: skill.name,

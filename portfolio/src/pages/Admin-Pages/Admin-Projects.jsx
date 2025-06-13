@@ -15,7 +15,7 @@ export const AdminProjects = () => {
 
     const fetchProjects = async () => {
         try {
-            const res = await axios.get("http://localhost:3000/admin/projects", {
+            const res = await axios.get("https://portfolio-ecac.onrender.com/admin/projects", {
                 withCredentials: true,
             });
             const projectsList = res.data.map(project => ({
@@ -59,7 +59,7 @@ export const AdminProjects = () => {
                 imageForm.append("project", formData.image);
 
                 const uploadRes = await axios.post(
-                    "http://localhost:3000/admin/project/upload",
+                    "https://portfolio-ecac.onrender.com/admin/project/upload",
                     imageForm,
                     {
                         withCredentials: true,
@@ -74,7 +74,7 @@ export const AdminProjects = () => {
                 };
 
 
-                await axios.post("http://localhost:3000/admin/projects/add", payload, {
+                await axios.post("https://portfolio-ecac.onrender.com/admin/projects/add", payload, {
                     withCredentials: true,
                 });
                 alert("Project added successfully!");
@@ -87,7 +87,7 @@ export const AdminProjects = () => {
                     liveLink: formData.liveLink,
                 };
 
-                await axios.put(`http://localhost:3000/admin/projects/${editId}/update`, payload, {
+                await axios.put(`https://portfolio-ecac.onrender.com/admin/projects/${editId}/update`, payload, {
                     withCredentials: true,
                 });
                 alert("Project updated successfully!");

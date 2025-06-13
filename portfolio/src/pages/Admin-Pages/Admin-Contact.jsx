@@ -9,7 +9,7 @@ export const AdminContacts = () => {
     const { AuthorizationToken } = useAuth();
 
     const getUsers = async () => {
-        const res = await fetch("http://localhost:3000/admin/contact", {
+        const res = await fetch("https://portfolio-ecac.onrender.com/admin/contact", {
             method: "GET",
             headers: {
                 Authorization: AuthorizationToken,

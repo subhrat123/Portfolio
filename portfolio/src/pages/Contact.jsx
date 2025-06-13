@@ -34,7 +34,7 @@ if(userData && user){
 
     const handleSubmit =async (e)=>{ 
         e.preventDefault();
-      const response =  fetch(`http://localhost:3000/contact`,{
+      const response =  fetch(`https://portfolio-ecac.onrender.com/contact`,{
            method:"POST",
            headers:{
             'Content-Type':"application/json"

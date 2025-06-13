@@ -12,7 +12,7 @@ export const AdminSkills = () => {
 
   const fetchSkills = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/admin/skills");
+      const res = await axios.get("https://portfolio-ecac.onrender.com/admin/skills");
       console.log("Fetched skills:", res.data);
       const skillsList = res.data.map(skill => ({
         _id: skill._id, 
@@ -49,7 +49,7 @@ catch(error){
       // 1. Upload image
       const imageForm = new FormData();
       imageForm.append("skill", formData.image);
-      const imageRes = await axios.post("http://localhost:3000/admin/upload", imageForm, {
+      const imageRes = await axios.post("https://portfolio-ecac.onrender.com/admin/upload", imageForm, {
         withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       });
@@ -57,7 +57,7 @@ catch(error){
       console.log("Image uploaded successfully:", imageRes);
 
       // 2. Add skill with uploaded image URL
-      const res = await axios.post("http://localhost:3000/admin/skills/add", {
+      const res = await axios.post("https://portfolio-ecac.onrender.com/admin/skills/add", {
         name: formData.skillname,
         description: formData.description,
         url: imageRes.data,

@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
 
     const userAuthentication = async () => {
         try {
-            const response = await fetch("http://localhost:3000/user", {
+            const response = await fetch("https://portfolio-ecac.onrender.com/user", {
                 method: "GET",
                 headers:{
                     Authorization: `Bearer ${token}`,

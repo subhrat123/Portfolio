@@ -1,6 +1,5 @@
-
 const contacts = require("../models/contact_schema");
-// const bcrypt=require("bcryptjs")
+
 
 const contact=async (req,res)=>{
     try{

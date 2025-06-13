@@ -6,7 +6,7 @@ export const About = () => {
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/admin/projects", {
+      const res = await axios.get("https://portfolio-ecac.onrender.com/admin/projects", {
         withCredentials: true,
       });
       const data = res.data.map((proj) => ({
