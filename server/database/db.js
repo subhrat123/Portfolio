@@ -11,7 +11,7 @@ const connectDb = async ()=>{
        await mongoose.connect(URI);
        console.log("server is running at 3000")
     } catch (error) {
-        console.error("db connection failed")
+        console.error("db connection failed: ", error);
         process.exit(0);
     }
 }
