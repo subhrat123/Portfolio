@@ -5,7 +5,7 @@ import { useAuth } from "../store/auth";
 
 
 export const Login = () => {
-
+    const backendURL=import.meta.env.VITE_BACKEND_URL;
     const [data, setdata] = useState({
         username: "",
         email: "",
@@ -30,7 +30,7 @@ export const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await fetch(`https://portfolio-ecac.onrender.com/login`,
+        const response = await fetch(`${backendURL}/login`,
             {
                 method: "POST",
                 headers: {
@@ -52,7 +52,7 @@ export const Login = () => {
 
             storeTokenLS(res.token)
 
-            Navigate("/");
+            Navigate("/admin/projects");
         }
 
     }
@@ -76,6 +76,11 @@ export const Login = () => {
           alt="Login illustration"
           className="rounded-2xl shadow-lg"
         />
+        <div className="mt-4 text-white">
+         <p className=" text-yellow-500 drop-shadow-md font-bold text-lg">Use following admin credentials: </p>
+          <div>Email: subhrat@gmail.com</div>
+          <div>Password: 12345678</div>
+        </div>
       </div>
 
       {/* Form Section */}
@@ -84,7 +89,6 @@ export const Login = () => {
          Admin Login
         </h1>
         <hr className="border-purple-400 mb-6" />
-
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="text-left space-y-4">
             <div>

@@ -3,19 +3,24 @@ import axios from "axios";
 
 
 export const Skills = () => {
-
-    const [skills, setSkills] = useState([]);
+const backendURL=import.meta.env.VITE_BACKEND_URL;
+    const [frontendSkills, setFrontendSkills] = useState([]);
+    const [backendSkills, setBackendSkills] = useState([]);
+    const [otherSkills, setOtherSkills] = useState([]);
 
     const fetchSkills = async () => {
         try {
-            const res = await axios.get("https://portfolio-ecac.onrender.com/admin/skills");
+            const res = await axios.get(`${backendURL}/admin/skills`);
             const skillsList = res.data.map(skill => ({
                 _id: skill._id,
                 skillname: skill.name,
                 description: skill.description,
                 image: skill.url,
+                category: skill.category,
             }));
-            setSkills(skillsList);
+            setFrontendSkills(skillsList.filter(skill => skill.category === 'frontend'));
+            setBackendSkills(skillsList.filter(skill => skill.category === 'backend'));
+            setOtherSkills(skillsList.filter(skill => skill.category === 'others'));
         } catch (err) {
             console.error("Failed to fetch skills", err);
         }
@@ -26,6 +31,36 @@ export const Skills = () => {
     }, []);
 
 
+
+    const SkillCard = ({ skill }) => {
+        const [isFlipped, setIsFlipped] = useState(false);
+
+        return (
+            <div
+                className="group relative w-36 h-40 [perspective:1000px]"
+                onMouseEnter={() => setIsFlipped(true)}
+                onMouseLeave={() => setIsFlipped(false)}
+            >
+                <div className={`relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}>
+                    <div className="absolute w-full h-full bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-6 flex flex-col items-center justify-center [backface-visibility:hidden]">
+                        <div className="w-20 h-20 flex items-center justify-center rounded-full overflow-hidden bg-white/20">
+                            <img
+                                src={skill.image}
+                                alt={skill.skillname}
+                                className="object-contain w-full h-full"
+                            />
+                        </div>
+                        <p className="mt-4 text-white text-center font-semibold text-sm group-hover:text-yellow-300 transition-all duration-300">
+                            {skill.skillname}
+                        </p>
+                    </div>
+                    <div className="absolute w-full h-full bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-6 flex flex-col items-center justify-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                        <p className="text-white text-center text-xs">{skill.description}</p>
+                    </div>
+                </div>
+            </div>
+        );
+    };
 
     return (
         <>
@@ -44,71 +79,34 @@ export const Skills = () => {
                     SKILLS
                 </div>
 
-                {/* Skills Grid */}
-                <div className="mb-16 flex flex-wrap justify-center gap-8 px-6">
-                    {skills.map((skill) => (
-                        <div
-                            key={skill._id}
-                            className="group relative bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-6 w-36 h-40 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
-                            title={skill.description}
-                        >
-                            <div className="w-20 h-20 flex items-center justify-center rounded-full overflow-hidden bg-white/20">
-                                <img
-                                    src={skill.image}
-                                    alt={skill.skillname}
-                                    className="object-contain w-full h-full"
-                                />
-                            </div>
-                            <p className="mt-4 text-white text-center font-semibold text-sm group-hover:text-yellow-300 transition-all duration-300">
-                                {skill.skillname}
-                            </p>
-                        </div>
-                    ))}
+                {/* Frontend Skills */}
+                <div className="w-full max-w-4xl px-6 mb-12">
+                    <h2 className="text-3xl text-cyan-300 font-bold mb-6 text-center">Frontend</h2>
+                    <div className="flex flex-wrap justify-center gap-8">
+                        {frontendSkills.map((skill) => (
+                            <SkillCard key={skill._id} skill={skill} />
+                        ))}
+                    </div>
                 </div>
 
-                <hr className="border-pink-400 w-2/3 my-6 shadow-md" />
-
-                <div className="text-3xl text-lime-400 font-bold">SKILLS</div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl w-full">
-                    {/* Front-End Development */}
-                    <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-6 rounded-xl shadow-lg text-left">
-                        <div className="text-xl font-semibold text-cyan-300 mb-2">Front-End Development</div>
-                        <ul className="list-disc ml-6 text-base space-y-2">
-                            <li><strong>HTML5 & CSS3:</strong> Semantic markup, responsive layouts using Flexbox and Grid, accessibility standards.</li>
-                            <li><strong>JavaScript (ES6+):</strong> Modern syntax, DOM manipulation, async/await, fetch API, and modular programming.</li>
-                            <li><strong>Tailwind CSS:</strong> Rapid UI development with utility-first classes, custom themes, and responsive design.</li>
-                            <li><strong>React.js:</strong> Functional components, React Router, Hooks (useState, useEffect, useContext), and state management.</li>
-                            <li><strong>Version Control:</strong> Git & GitHub for source code management and collaboration.</li>
-                        </ul>
+                {/* Backend Skills */}
+                <div className="w-full max-w-4xl px-6 mb-12">
+                    <h2 className="text-3xl text-cyan-300 font-bold mb-6 text-center">Backend</h2>
+                    <div className="flex flex-wrap justify-center gap-8">
+                        {backendSkills.map((skill) => (
+                            <SkillCard key={skill._id} skill={skill} />
+                        ))}
                     </div>
+                </div>
 
-                    {/* Back-End Development */}
-                    <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-6 rounded-xl shadow-lg text-left">
-                        <div className="text-xl font-semibold text-cyan-300 mb-2">Back-End Development</div>
-                        <ul className="list-disc ml-6 text-base space-y-2">
-                            <li><strong>Node.js:</strong> Building scalable RESTful APIs, file system handling, and event-driven programming.</li>
-                            <li><strong>Express.js:</strong> Routing, middleware usage, request/response handling, and error management.</li>
-                            <li><strong>MongoDB:</strong> Document-based NoSQL database, schema design, indexing, and aggregation framework.</li>
-                            <li><strong>Mongoose:</strong> ODM for MongoDB, schema validation, population, and model relationships.</li>
-                            <li><strong>Authentication:</strong> JWT-based login systems with bcrypt hashing for security.</li>
-                        </ul>
+                {/* Other Skills */}
+                <div className="w-full max-w-4xl px-6 mb-12">
+                    <h2 className="text-3xl text-cyan-300 font-bold mb-6 text-center">Others</h2>
+                    <div className="flex flex-wrap justify-center gap-8">
+                        {otherSkills.map((skill) => (
+                            <SkillCard key={skill._id} skill={skill} />
+                        ))}
                     </div>
-
-                    {/* Other Tools & Skills */}
-                    <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-6 rounded-xl shadow-lg text-left">
-                        <div className="text-xl font-semibold text-cyan-300 mb-2">Other Tools & Skills</div>
-                        <ul className="list-disc ml-6 text-base space-y-2">
-                            <li><strong>Postman:</strong> API testing and debugging tool for backend development.</li>
-                            <li><strong>VS Code:</strong> Main development environment with useful extensions and productivity workflows.</li>
-                            <li><strong>Python (Basic):</strong> Scripting, control structures, data structures, and basic ADK usage.</li>
-                            <li><strong>C/C++ Programming:</strong> Problem solving, competitive programming STL usage, memory management, and data structures & algorithms.</li>
-                            <li><strong>AI Integration:</strong> Exploring integration of AI tools like LLMs and LangChain into MERN stack apps.</li>
-                            <li><strong>Deployment:</strong> Experience using Render for hosting full-stack apps.</li>
-                        </ul>
-                    </div>
-
-
                 </div>
             </div>
         </>

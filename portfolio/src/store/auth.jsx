@@ -2,12 +2,12 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
 
-
 export const AuthProvider = ({ children }) => {
 
+    const url= import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
     const [token, settoken] = useState(localStorage.getItem('token'));
-    const [user, setuser] = useState("");
-    const AuthorizationToken=`Bearer ${token}`
+    const [user, setuser] = useState({ username: "", email: "", isAdmin: false });
+    const AuthorizationToken = `Bearer ${token}`
 
     const storeTokenLS = (Token) => {
         settoken(Token);
@@ -24,18 +24,21 @@ export const AuthProvider = ({ children }) => {
 
     const userAuthentication = async () => {
         try {
-            const response = await fetch("https://portfolio-ecac.onrender.com/user", {
+            const response = await fetch(`${url}/user`, {
                 method: "GET",
-                headers:{
+                headers: {
                     Authorization: `Bearer ${token}`,
-            },
+                },
 
             });
 
-            if(response.ok) {
-                const data=await response.json();
-                console.log(data.userData);
-                setuser(data.userData);
+            if (response.ok) {
+                const data = await response.json();
+                setuser({
+                    username: data.userData.username,
+                    email: data.userData.email,
+                    isAdmin: data.userData.isAdmin
+                })
             }
 
         } catch (error) {
@@ -44,9 +47,13 @@ export const AuthProvider = ({ children }) => {
     }
 
     useEffect(() => {
-      userAuthentication();
+        userAuthentication();
     }, [])
-    
+
+    // useEffect(() => {
+    //     console.log("User state changed:", user);
+    // }, [user]);
+
 
     return (
         <AuthContext.Provider value={{ storeTokenLS, logout, isLogedin, user, AuthorizationToken, }}>
@@ -55,10 +62,11 @@ export const AuthProvider = ({ children }) => {
 }
 
 
+
 export const useAuth = () => {
 
     const AuthContextValue = useContext(AuthContext);
-    if (!AuthContextValue) { 
+    if (!AuthContextValue) {
         throw new Error("useAuth used outside the provider");
     }
     return AuthContextValue;

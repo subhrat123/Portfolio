@@ -19,12 +19,7 @@ router.route('/admin/projects').get(adminRoute.getProjects);
 router.route('/admin/projects/add').post(adminRoute.addProjects);
 router.route('/admin/projects/:id/update').put(adminRoute.updateProjects);
 
-// POST   /admin/project/upload         // for image upload (same like skills)
-// GET    /admin/projects               // get all projects
-// POST   /admin/projects/add           // add project
-// PUT    /admin/projects/:id/update 
 
-// TODO: update the user data in database.
 // router.route('/admin/user/update/:id').update(authMiddleWare,adminMiddleWare,adminRoute.updateUser);
 
 module.exports=router;

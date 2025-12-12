@@ -12,14 +12,15 @@ import { AdminContacts } from "./pages/Admin-Pages/Admin-Contact";
 import { AdminLayot } from "./components/layout/Admin-Layot";
 import { AdminSkills } from "./pages/Admin-Pages/Admin-Skills";
 import { AdminProjects } from "./pages/Admin-Pages/Admin-Projects";
-
+import { Navbar } from "./components/Navbar";
+import { Footer } from "./components/Footer";
 
 
 function App() {
   return (
     <>
       <BrowserRouter>
-
+       <Navbar/>
         <Routes>
 
           <Route path="/" element={<Home />}></Route>
@@ -42,6 +43,8 @@ function App() {
 
 
         </Routes>
+
+         <Footer/>
 
       </BrowserRouter>
 

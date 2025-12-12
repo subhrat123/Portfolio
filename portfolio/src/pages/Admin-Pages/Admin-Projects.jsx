@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export const AdminProjects = () => {
+    const backendURL= import.meta.env.VITE_BACKEND_URL;
     const [projects, setProjects] = useState([]);
     const [showForm, setShowForm] = useState(false);
     const [editId, setEditId] = useState(null); // for update mode
@@ -15,7 +16,7 @@ export const AdminProjects = () => {
 
     const fetchProjects = async () => {
         try {
-            const res = await axios.get("https://portfolio-ecac.onrender.com/admin/projects", {
+            const res = await axios.get(`${backendURL}/admin/projects`, {
                 withCredentials: true,
             });
             const projectsList = res.data.map(project => ({
@@ -59,7 +60,7 @@ export const AdminProjects = () => {
                 imageForm.append("project", formData.image);
 
                 const uploadRes = await axios.post(
-                    "https://portfolio-ecac.onrender.com/admin/project/upload",
+                    `${backendURL}/admin/project/upload`,
                     imageForm,
                     {
                         withCredentials: true,
@@ -74,7 +75,7 @@ export const AdminProjects = () => {
                 };
 
 
-                await axios.post("https://portfolio-ecac.onrender.com/admin/projects/add", payload, {
+                await axios.post(`${backendURL}/admin/projects/add`, payload, {
                     withCredentials: true,
                 });
                 alert("Project added successfully!");
@@ -87,7 +88,7 @@ export const AdminProjects = () => {
                     liveLink: formData.liveLink,
                 };
 
-                await axios.put(`https://portfolio-ecac.onrender.com/admin/projects/${editId}/update`, payload, {
+                await axios.put(`${backendURL}/admin/projects/${editId}/update`, payload, {
                     withCredentials: true,
                 });
                 alert("Project updated successfully!");

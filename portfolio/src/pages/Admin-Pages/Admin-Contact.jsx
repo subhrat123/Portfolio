@@ -9,7 +9,7 @@ export const AdminContacts = () => {
     const { AuthorizationToken } = useAuth();
 
     const getUsers = async () => {
-        const res = await fetch("https://portfolio-ecac.onrender.com/admin/contact", {
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/admin/contact`, {
             method: "GET",
             headers: {
                 Authorization: AuthorizationToken,

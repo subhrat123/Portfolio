@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useAuth } from "../store/auth";
 export const Contact = () => {
-
+const backendURL=import.meta.env.VITE_BACKEND_URL;
     const [data, setdata] = useState({
         username: "",
         email: "",
@@ -34,7 +34,7 @@ if(userData && user){
 
     const handleSubmit =async (e)=>{ 
         e.preventDefault();
-      const response =  fetch(`https://portfolio-ecac.onrender.com/contact`,{
+      const response =  fetch(`${backendURL}/contact`,{
            method:"POST",
            headers:{
             'Content-Type':"application/json"

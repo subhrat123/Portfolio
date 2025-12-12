@@ -2,13 +2,25 @@ import { Navigate, NavLink, Outlet } from "react-router-dom";
 import { FaUsers } from "react-icons/fa";
 import { MdContactPage } from "react-icons/md";
 import { useAuth } from "../../store/auth";
+import { toast } from "react-toastify";
+
 
 export const AdminLayot = () => {
    const { isLogedin,user } = useAuth();
+  console.log(user);
    if (!isLogedin) {
       return <Navigate to="/Login" />;
    }
-     if (user.role !== "admin") return <Navigate to="/" />;
+     if (user.isAdmin !== true){
+        
+      toast.error("Access Denied: You are not an admin!", {
+        position: "top-center",
+        autoClose: 3000,
+      });
+      
+      setTimeout(() => {}, 500);
+       return <Navigate to="/" />;
+      }
   return (
     
     <>

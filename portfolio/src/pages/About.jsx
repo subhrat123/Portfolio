@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export const About = () => {
+  const backendURL= import.meta.env.VITE_BACKEND_URL;
   const [projects, setProjects] = useState([]);
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("https://portfolio-ecac.onrender.com/admin/projects", {
+      const res = await axios.get(`${backendURL}/admin/projects`, {
         withCredentials: true,
       });
       const data = res.data.map((proj) => ({
@@ -102,9 +103,6 @@ export const About = () => {
             </div>
           ))}
         </div>
-
-
-
       </div>
     </div>
   );

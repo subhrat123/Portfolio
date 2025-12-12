@@ -2,17 +2,19 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export const AdminSkills = () => {
+  const backendURL = import.meta.env.VITE_BACKEND_URL;
   const [skills, setSkills] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
     skillname: "",
     description: "",
     image: null,
+    category: "frontend",
   });
 
   const fetchSkills = async () => {
     try {
-      const res = await axios.get("https://portfolio-ecac.onrender.com/admin/skills");
+      const res = await axios.get(`${backendURL}/admin/skills`);
       console.log("Fetched skills:", res.data);
       const skillsList = res.data.map(skill => ({
         _id: skill._id, 
@@ -49,7 +51,7 @@ catch(error){
       // 1. Upload image
       const imageForm = new FormData();
       imageForm.append("skill", formData.image);
-      const imageRes = await axios.post("https://portfolio-ecac.onrender.com/admin/upload", imageForm, {
+      const imageRes = await axios.post(`${backendURL}/admin/upload`, imageForm, {
         withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       });
@@ -57,15 +59,16 @@ catch(error){
       console.log("Image uploaded successfully:", imageRes);
 
       // 2. Add skill with uploaded image URL
-      const res = await axios.post("https://portfolio-ecac.onrender.com/admin/skills/add", {
+      const res = await axios.post(`${backendURL}/admin/skills/add`, {
         name: formData.skillname,
         description: formData.description,
         url: imageRes.data,
+        category: formData.category,
       }, { withCredentials: true });
 
       alert("Skill added successfully!");
       setShowForm(false);
-      fetchSkills(); // refresh skills list
+      fetchSkills(); 
     } catch (err) {
       console.error("Error adding skill", err);
       alert("Failed to add skill.");
@@ -110,6 +113,17 @@ useEffect(() => {
             className="w-full border p-2 rounded"
             required
           />
+          <select
+            name="category"
+            value={formData.category}
+            onChange={handleInputChange}
+            className="w-full border p-2 rounded"
+            required
+          >
+            <option value="frontend">Frontend</option>
+            <option value="backend">Backend</option>
+            <option value="others">Others</option>
+          </select>
           <input
             type="file"
             name="skill"

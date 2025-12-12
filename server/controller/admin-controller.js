@@ -63,12 +63,12 @@ const getSkills= async (req,res)=>{
 
 const addSkills= async(req,res)=>{
     try{
-        const {url,name,description}=req.body;
-        if(!url || !name || !description){
+        const {url,name,description,category}=req.body;
+        if(!url || !name || !description || !category){
             return res.status(400).json({ message: 'All fields are required' });
         }
         const newSkill = new skills({
-            url,name,description
+            url,name,description,category
         })
         await newSkill.save();
         res.status(201).json({ message: 'Skill added successfully', skill: newSkill });

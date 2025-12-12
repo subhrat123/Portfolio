@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import { useAuth } from "../store/auth";
 
 export const Signin = () => {
-
+const backendURL=import.meta.env.VITE_BACKEND_URL;
     const [data, setdata] = useState({
         username: "",
         email: "",
@@ -28,7 +28,7 @@ const {storeTokenLS}=useAuth();
     const handleSubmit= async (e)=>{
         e.preventDefault();
         
-        const response = await fetch(`https://portfolio-ecac.onrender.com/register`,
+        const response = await fetch(`${backendURL}/register`,
             {
                 method:"POST",
                 headers:{
