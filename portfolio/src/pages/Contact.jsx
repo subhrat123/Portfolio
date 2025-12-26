@@ -55,7 +55,7 @@ if(userData && user){
       <section className="h-screen w-full relative text-white overflow-hidden">
   {/* Background Image */}
   <img
-    src="./src/assets/about.jpg"
+    src="./images/about.jpg"
     alt="background"
     className="absolute top-0 left-0 w-full h-full object-cover brightness-50 -z-10"
   />
@@ -70,7 +70,7 @@ if(userData && user){
      <div className="max-lg:absolute relative max-lg:top-20 max-lg:-z-50 max-lg:opacity-80">
   <img
     className="h-[70vh] rounded-lg drop-shadow-2xl shadow-fuchsia-700 shadow-2xl"
-    src="./src/assets/contact1.jpg"
+    src="./images/contact1.jpg"
     alt="contact"
   />
   <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/30 rounded-lg">

@@ -23,16 +23,16 @@ function App() {
        <Navbar/>
         <Routes>
 
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/about" element={<About />}></Route>
-          <Route path="/skills" element={<Skills />}></Route>
-          <Route path="/contact" element={<Contact />}></Route>
-          <Route path="/Signin" element={<Signin />}></Route>
-          <Route path="/Login" element={<Login />}></Route>
-          <Route path="/Logout" element={<Logout />}></Route>
+          <Route path="/Portfolio" element={<Home />}></Route>
+          <Route path="/Portfolio/about" element={<About />}></Route>
+          <Route path="/Portfolio/skills" element={<Skills />}></Route>
+          <Route path="/Portfolio/contact" element={<Contact />}></Route>
+          <Route path="/Portfolio/Signin" element={<Signin />}></Route>
+          <Route path="/Portfolio/Login" element={<Login />}></Route>
+          <Route path="/Portfolio/Logout" element={<Logout />}></Route>
           <Route path="/*" element={<Error />}></Route>
 
-          <Route path="/admin" element={<AdminLayot />}>
+          <Route path="/Portfolio/admin" element={<AdminLayot />}>
             {/* <Route path="users" element={<AdminUsers />} />
             <Route path="contacts" element={<AdminContacts />} /> */}
             <Route path="skills" element={<AdminSkills />} />

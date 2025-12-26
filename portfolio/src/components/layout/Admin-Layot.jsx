@@ -9,7 +9,7 @@ export const AdminLayot = () => {
    const { isLogedin,user } = useAuth();
   console.log(user);
    if (!isLogedin) {
-      return <Navigate to="/Login" />;
+      return <Navigate to="/Portfolio/Login" />;
    }
      if (user.isAdmin !== true){
         
@@ -19,7 +19,7 @@ export const AdminLayot = () => {
       });
       
       setTimeout(() => {}, 500);
-       return <Navigate to="/" />;
+       return <Navigate to="/Portfolio" />;
       }
   return (
     
@@ -28,7 +28,7 @@ export const AdminLayot = () => {
         <div className="container mx-auto flex justify-center">
           <nav className="flex gap-6">
             <NavLink
-              to="/admin/projects"
+              to="/Portfolio/admin/projects"
               className={({ isActive }) =>
                 `flex items-center gap-2 px-6 py-2 rounded-full font-semibold transition-all duration-300 text-white shadow-md ${
                   isActive
@@ -42,7 +42,7 @@ export const AdminLayot = () => {
             </NavLink>
 
             <NavLink
-              to="/admin/skills"
+              to="/Portfolio/admin/skills"
               className={({ isActive }) =>
                 `flex items-center gap-2 px-6 py-2 rounded-full font-semibold transition-all duration-300 text-white shadow-md ${
                   isActive

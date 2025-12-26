@@ -53,11 +53,11 @@ const {storeTokenLS}=useAuth();
 
     return <>
         <section className=" h-screen  text-white ">
-        <img src="./src/assets/about.jpg" alt="img" className=" max-lg:h-screen fixed lg:h-[calc(100vh-5vh)] w-full -z-10 top-0 left-0 " />
+        <img src="./images/about.jpg" alt="img" className=" max-lg:h-screen fixed lg:h-[calc(100vh-5vh)] w-full -z-10 top-0 left-0 " />
             <main className="">
                 <div className="max-lg:flex-col relative md:top-32 py-5 w-auto flex justify-center items-center gap-10  ">
                     <div className="  img lg:grid justify-items-end">
-                        <img className=" rounded-2xl max-lg:h-80 h-full w-96 drop-shadow-2xl" src=".\src\assets\open_account.png" alt="image" />
+                        <img className=" rounded-2xl max-lg:h-80 h-full w-96 drop-shadow-2xl" src="./images/open_account.png" alt="image" />
                     </div>
                     <div className=" lg: w-80 text-center register font-serif">
                         <h1 className=" text-4xl mb-6">SIGN IN</h1>

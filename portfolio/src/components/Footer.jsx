@@ -12,7 +12,7 @@ export const Footer = () => {
           rel="noopener noreferrer"
           className="hover:scale-110 transition-transform duration-300"
         >
-          <img src="./src/assets/linkedin.png" alt="LinkedIn" className="h-6" />
+          <img src="./images/linkedin.png" alt="LinkedIn" className="h-6" />
         </a>
         <a
           href="https://www.instagram.com/subhrat123/?next=%2F"
@@ -20,7 +20,7 @@ export const Footer = () => {
           rel="noopener noreferrer"
           className="hover:scale-110 transition-transform duration-300"
         >
-          <img src="./src/assets/insta.png" alt="Instagram" className="h-6" />
+          <img src="./images/insta.png" alt="Instagram" className="h-6" />
         </a>
       </div>
     </footer>

@@ -68,7 +68,7 @@ const backendURL=import.meta.env.VITE_BACKEND_URL;
 
                 {/* Fancy animated background */}
                 <img
-                    src="./src/assets/skill.jpg"
+                    src="./images/skill.jpg"
                     className=" shadow-2xl brightness-110 contrast-125 saturate-15 fixed top-0 left-0 w-full h-screen object-cover -z-10"
                     alt=""
                 />

@@ -11,7 +11,7 @@ export const Home = () => {
           <div className="rounded-full overflow-hidden outline outline-2 outline-cyan-300 shadow-xl drop-shadow-2xl bg-cyan-400 h-60 w-60 flex items-center justify-center">
             <img
               className="h-full object-cover"
-              src="./src/assets/profile.jpg"
+              src="./images/profile.jpg"
               alt="profile"
             />
           </div>
@@ -37,13 +37,13 @@ export const Home = () => {
       {/* Navigation Buttons */}
       <div className="lg:absolute lg:bottom-32  flex gap-6 justify-center items-center max-lg:m-4">
         <a
-          href="/Contact"
+          href="/Portfolio/Contact"
           className="bg-gradient-to-r from-blue-600 to-purple-500 px-6 py-2 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition-all duration-300"
         >
           Contact
         </a>
         <a
-          href="/Skills"
+          href="/Portfolio/Skills"
           className="bg-gradient-to-r from-blue-600 to-purple-500 px-6 py-2 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition-all duration-300"
         >
           Skills

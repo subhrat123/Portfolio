@@ -62,7 +62,7 @@ export const Login = () => {
       <section className="h-screen w-full relative text-white overflow-hidden">
   {/* Background Image */}
   <img
-    src="./src/assets/about.jpg"
+    src="./images/about.jpg"
     alt="background"
     className="fixed top-0 left-0 w-full h-full object-cover -z-10"
   />
@@ -72,7 +72,7 @@ export const Login = () => {
       {/* Illustration */}
       <div className="w-72 lg:w-[400px]">
         <img
-          src="./src/assets/registration.png"
+          src="./images/registration.png"
           alt="Login illustration"
           className="rounded-2xl shadow-lg"
         />

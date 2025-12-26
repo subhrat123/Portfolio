@@ -30,7 +30,7 @@ export const About = () => {
   return (
     <div className="min-h-screen w-full flex justify-center items-center text-white relative">
       <img
-        src="./src/assets/about.jpg"
+        src="./images/about.jpg"
         alt="img"
         className="h-screen fixed  w-full object-cover brightness-50 -z-10 top-0 left-0"
       />
@@ -78,17 +78,17 @@ export const About = () => {
         <div className="flex flex-wrap justify-center gap-6 px-6">
           {[
             {
-              src: "./src/assets/netflix.svg",
+              src: "./images/netflix.svg",
               title: "Netflix Sign-Up UI Clone",
               subtitle: ""
             },
             {
-              src: "./src/assets/spotify.ico",
+              src: "./images/spotify.ico",
               title: "Spotify Clone",
               subtitle: "HTML, CSS, JS"
             },
             {
-              src: "./src/assets/todo.jpeg",
+              src: "./images/todo.jpeg",
               title: "To-do App",
               subtitle: "React, JS"
             }
