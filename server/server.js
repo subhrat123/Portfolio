@@ -11,7 +11,7 @@ const contact = require("./controller/contact");
 const cors=require("cors");
 
 const corsOptions={
-origin:"http://localhost:5173",
+origin:["https://subhrat123.github.io","http://localhost:5173"],
 method:"GET, POST, DELETE, PATCH, PUT, HEAD", 
 credentials:true
 }
