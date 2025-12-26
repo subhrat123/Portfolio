@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAuth } from "../store/auth";
 
 export const Home = () => {
@@ -36,18 +37,18 @@ export const Home = () => {
 
       {/* Navigation Buttons */}
       <div className="lg:absolute lg:bottom-32  flex gap-6 justify-center items-center max-lg:m-4">
-        <a
-          href="/Portfolio/Contact"
+        <Link
+          to="/Portfolio/Contact"
           className="bg-gradient-to-r from-blue-600 to-purple-500 px-6 py-2 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition-all duration-300"
         >
           Contact
-        </a>
-        <a
-          href="/Portfolio/Skills"
+        </Link>
+        <Link
+          to="/Portfolio/Skills"
           className="bg-gradient-to-r from-blue-600 to-purple-500 px-6 py-2 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition-all duration-300"
         >
           Skills
-        </a>
+        </Link>
       </div>
     </div>
   );
