@@ -52,7 +52,7 @@ export const Login = () => {
 
             storeTokenLS(res.token)
 
-            Navigate("/admin/projects");
+            Navigate("/Portfolio/admin/projects");
         }
 
     }

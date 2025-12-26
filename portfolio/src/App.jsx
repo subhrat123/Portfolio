@@ -35,8 +35,8 @@ function App() {
           <Route path="/Portfolio/admin" element={<AdminLayot />}>
             {/* <Route path="users" element={<AdminUsers />} />
             <Route path="contacts" element={<AdminContacts />} /> */}
-            <Route path="skills" element={<AdminSkills />} />
-            <Route path="projects" element={<AdminProjects />} />
+            <Route path="skills" element={<AdminSkills />}/>
+            <Route path="projects" element={<AdminProjects />}/>
             
 
           </Route>

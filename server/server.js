@@ -12,7 +12,7 @@ const cors=require("cors");
 
 const corsOptions={
 origin:["https://subhrat123.github.io","http://localhost:5173"],
-method:"GET, POST, DELETE, PATCH, PUT, HEAD", 
+methods:["GET, POST, DELETE, PATCH, PUT, HEAD"], 
 credentials:true
 }
 

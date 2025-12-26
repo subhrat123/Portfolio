@@ -50,7 +50,7 @@ const login = async (req, res) => {
         if (!userExist) {
             return res.status(400).send("Invalid credentials");
         }
-
+        console.log(userExist);
         const passwordMatch = await bcrypt.compare(req.body.password, userExist.password,);
         if (!passwordMatch) {
             return res.status(400).send("Invalid password");
